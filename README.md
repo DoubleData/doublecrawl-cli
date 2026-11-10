@@ -2,7 +2,7 @@
 
 # DoubleCrawl CLI
 
-**Fetch any public web page from your terminal, your scripts or your AI agent, without getting blocked.**
+**Ask for a page. Get the page. From your terminal, your scripts or your AI agent, and pay only for pages that arrive.**
 
 [![Latest release](https://img.shields.io/github/v/release/doubledata/doublecrawl-cli?label=release&color=2f6feb)](https://github.com/doubledata/doublecrawl-cli/releases/latest)
 [![Platforms](https://img.shields.io/badge/platforms-macOS%20%7C%20Linux%20%7C%20Windows-555)](https://github.com/doubledata/doublecrawl-cli/releases/latest)
@@ -28,8 +28,8 @@ including **+250 for starring this repo** ([how](#free-credits)).
 
 - **Pages, not proxy plumbing.** Send a URL, get the page back. DoubleCrawl handles the route to the target;
   you pick an exit country with one flag when you need one.
-- **You don't pay for blocks.** Requests the target refuses are never billed. You pay for pages delivered and
-  for truthful "page missing" answers.
+- **Failed pages cost 0.** You pay for pages that arrive (and for a truthful "page missing" answer).
+  Failed tries, timeouts and our own retries are on us.
 - **Built for agents.** Every command speaks `--json`, exit codes are documented, and the same account works
   from the CLI, the [hosted MCP server](#use-with-ai-agents) and the Claude Code plugin.
 - **One account everywhere.** Sign in once in the browser. Credits, API keys, usage and request logs are the
@@ -182,7 +182,7 @@ Good to know:
 - `Authorization`, `Host`, `Cookie`, hop-by-hop, `Proxy-*`, `X-Forwarded-*` and `X-DD-*` headers are set by
   DoubleCrawl and can't be overridden with `-H`.
 - The status line shows the outcome: **delivered** (you got the page), **absent** (the target says the page
-  does not exist; billed, exit code `7`) or **refused** (the target blocked the request; not billed).
+  does not exist; billed, exit code `7`) or **refused** (the page did not arrive; not billed).
 - `fetch` waits up to 2 minutes. If no answer comes back the request may still finish and be billed: check
   `doublecrawl logs` before retrying.
 
